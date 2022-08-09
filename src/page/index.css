@@ -1,0 +1,35 @@
+.corpsPage{
+    background-color: blue;
+    height: 500px;
+    width: 100%;
+}
+
+.headerPage{
+    background-color: rgb(255, 0, 157);
+    height: 10%;
+    width: 100%;
+}
+
+.bodyPage{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(57, 139, 86);
+    height: 90%;
+    width: 100%;
+}
+
+.imagePage{
+    background-color: rgb(238, 255, 0);
+    height: 100%;
+    width: 30%;
+}
+
+.donnePage{
+    background-color: rgb(255, 119, 0);
+    height: 100%;
+    width: 70%;
+}
+
+.imagePreviw{
+    height: 80%;
+}
