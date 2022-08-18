@@ -13,7 +13,7 @@
 }
 .nonActivBouton{
     position: absolute;
-    top: calc(30vw + 300px);
+    top: 100px;
     border-radius: 1em;
     --whidht1: calc(- 30vw);
     z-index: 90;
@@ -53,7 +53,7 @@
 
 .contenerImage{
     position: absolute;
-    top: calc(700px * 0.1 + 100px);
+    top: 200px;
     border-radius: 1em;
     width: calc(90% * 0.4);
     display: flex;
