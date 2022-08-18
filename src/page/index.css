@@ -1,35 +1,114 @@
 .corpsPage{
-    background-color: blue;
-    height: 500px;
+    height: 100% !important;
     width: 100%;
+}
+.activBouton{
+    position: absolute;
+    top: calc(700px * 0.1 + 100px);
+    border-radius: 1em;
+    --whidht1: 30vw;
+    width: calc(var(--whidht1));
+    height: calc(var(--whidht1) * 0.7);
+    z-index: 90;
+}
+.nonActivBouton{
+    position: absolute;
+    top: calc(30vw + 200px);
+    border-radius: 1em;
+    --whidht1: calc(- 30vw);
+    width: max(200px, calc(var(--whidht1)));
+    height: calc(max(200px, calc(var(--whidht1))) * 0.7);
+    z-index: 90;
 }
 
 .headerPage{
-    background-color: rgb(255, 0, 157);
     height: 10%;
     width: 100%;
+    text-align: center;
 }
 
 .bodyPage{
     display: flex;
     flex-direction: row;
-    background-color: rgb(57, 139, 86);
     height: 90%;
     width: 100%;
 }
 
 .imagePage{
-    background-color: rgb(238, 255, 0);
     height: 100%;
-    width: 30%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
 }
 
 .donnePage{
-    background-color: rgb(255, 119, 0);
     height: 100%;
-    width: 70%;
+    width: 60%;
 }
 
 .imagePreviw{
-    height: 80%;
+    width: 100% !important;
+    display: block;
 }
+
+.contenerImage{
+    position: absolute;
+    top: calc(700px * 0.1 + 100px);
+    border-radius: 1em;
+    width: calc(90% * 0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.oneFace{
+    position:absolute;
+    overflow: visible !important;
+    flex: content;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(162, 165, 194, 0.29);
+    border-radius: 20%;
+    border: 1px rgb(183, 0, 255) double;
+}
+
+
+.oneFaceNotActive{
+    position:absolute;
+    overflow: visible !important;
+    flex: content;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(162, 165, 194, 0);
+    border-radius: 20%;
+    color: rgba(245, 245, 220, 0);
+    border: 1px rgba(183, 0, 255, 0.129) double;
+}
+
+.oneFaceActive{
+    position:absolute;
+    overflow: visible !important;
+    padding: 1%;
+    flex: content;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(117, 181, 126, 0.22);
+    color: rgba(0, 255, 68, 0.257);
+    border-radius: 20%;
+    border:double 2px rgb(0, 255, 68) ;
+}
+
+body>div{
+    height: 97vh !important;
+}
+
+.oneFace:hover, .oneFaceNotActive:hover, .oneFaceActive:hover  {
+    background-color: rgba(255, 217, 0, 0.679);
+  }
+  
