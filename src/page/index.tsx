@@ -21,14 +21,14 @@ const Page = () => {
     const [image, setImage] = useState<string>("");
     const [preview, setPreview] = useState<img>();
     const [count, setCount] = useState<number>(0);
-    const [awsResponsee, setAwsResponsee] = useState<importedObject[]>([baba])
+    const [awsResponsee, setAwsResponsee] = useState<importedObject[]>([baba]);
     const fielInputRef = useRef<HTMLInputElement|null>(null);
     const [oneString, setOneString] = useState<string>("not modified");
     const [oneOneString, setOneOneString] = useState<any>("any");
     const [faceActive, setFaceActive] = useState<number|null>(null);
     
     useEffect(()=>{
-        setOneString(awsResponsee!=undefined?awsResponsee[0].Gender.Value:"c'est undifaid")
+        setOneString(awsResponsee!=undefined?awsResponsee[0].Gender.Value:"c'est undifaid");
     },[count])
 
     
@@ -48,7 +48,7 @@ const Page = () => {
     useEffect(()=>{
         console.log(awsResponsee);
         console.log(image);
-    },[count])
+    },[count]);
 
 
     const takingImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,7 +115,7 @@ const Page = () => {
                         <img className='imagePreviw' src={preview?.base64String} alt={preview?.fileName} onClick={
                             (e)=>{
                                 e.preventDefault();
-                                fielInputRef.current?.click()
+                                fielInputRef.current?.click();
                             }
                         }></img>
                             {MarqFace(awsResponsee,faceActive,setFaceActive)}

@@ -20,7 +20,7 @@ interface Props {
   count: number;
   analyze: () => void;
   resultat2: React.Dispatch<any>;
-}
+};
 
 const AwsGet: React.FC<Props> = ({imageData, resultat, count, analyze, resultat2}) => {
   //const [result, setResult] = useState<any>();
@@ -57,7 +57,7 @@ const AwsGet: React.FC<Props> = ({imageData, resultat, count, analyze, resultat2
       const data = await client.send(detectFacesCommand);
       //console.log('resultat apres la fonction: '+data);
       resultat(data.FaceDetails);
-      resultat2(data.FaceDetails[0].Confidence)
+      resultat2(data.FaceDetails[0].Confidence);
       console.log(data);
       console.log(data.FaceDetails);
       return data;
