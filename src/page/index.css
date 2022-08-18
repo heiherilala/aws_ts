@@ -13,11 +13,9 @@
 }
 .nonActivBouton{
     position: absolute;
-    top: calc(30vw + 200px);
+    top: calc(30vw + 300px);
     border-radius: 1em;
     --whidht1: calc(- 30vw);
-    width: max(200px, calc(var(--whidht1)));
-    height: calc(max(200px, calc(var(--whidht1))) * 0.7);
     z-index: 90;
 }
 
