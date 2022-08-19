@@ -63,6 +63,8 @@ const Page = () => {
 
 
       useEffect(()=>{
+        console.log(awsResponsee);
+        
         if ((awsResponsee==[baba])) {
             setLoadingCheck(true)
         }
@@ -90,12 +92,13 @@ const Page = () => {
       },[preview]);
 
     return (
-        <div className="corpsPage">
+        <div className="corpsPage container-fluid">
             <h1 className="headerPage text-success">
                 Facial recognition with AWS
             </h1>
-            <div className="bodyPage">
+            <div className="bodyPage row">
                 <div className="imagePage">
+                    
                     {preview==undefined?
                         <button className='btn btn-outline-secondary activBouton' onClick={
                             (e)=>{
@@ -111,6 +114,8 @@ const Page = () => {
                             }
                         }>Another image</button>
                     }
+
+                    <div className="responsivDiv"></div>
 
                     <input 
                     style={{display:"none"}}
@@ -135,6 +140,7 @@ const Page = () => {
 
 
                 <div className="donnePage">
+                
                     {
                         preview==undefined?<h2>Insert an image with faces</h2>:(loadingCheck?Loading():(ChooseFace(awsResponsee,faceActive,setFaceActive)))
                     }

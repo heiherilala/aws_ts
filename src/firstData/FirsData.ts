@@ -35,8 +35,8 @@ import { importedObject } from "../interface/Interface";
         },
         "Landmarks":[{
             Type:"string",
-            x:1,
-            y:1,
+            X:1,
+            Y:1,
         }],
         "MouthOpen":{
             Confidence:1,

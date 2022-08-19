@@ -37,8 +37,8 @@ export interface Gender {
 
 export interface Landmark {
     Type:string;
-    x:number;
-    y:number;
+    X:number;
+    Y:number;
 };
 
 export interface MouthOpen {
