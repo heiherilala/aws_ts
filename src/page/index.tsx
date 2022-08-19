@@ -1,17 +1,15 @@
-import { ImportExport } from 'aws-sdk';
+import { Discovery, ImportExport } from 'aws-sdk';
 import React, { useEffect, useRef, useState } from 'react';
 import AwsGet from '../AwsGet/AwsGet';
 import ChooseFace from '../chooseFace/ChooseFace';
 import DataFace from '../dataFace/DataFace';
 import { baba } from '../firstData/FirsData';
-import { importedObject } from '../interface/Interface';
+import { img, importedObject } from '../interface/Interface';
+import Loading from '../loading/Loading';
 import MarqFace from '../marqFace/marqFace';
 import './index.css';
 
-interface img {
-    fileName: string, 
-    base64String: string
-  }
+
 
   
   
@@ -26,6 +24,7 @@ const Page = () => {
     const [oneString, setOneString] = useState<string>("not modified");
     const [oneOneString, setOneOneString] = useState<any>("any");
     const [faceActive, setFaceActive] = useState<number|null>(null);
+    const [loadingCheck, setLoadingCheck] = useState<boolean>(false);
     
     useEffect(()=>{
         setOneString(awsResponsee!=undefined?awsResponsee[0].Gender.Value:"c'est undifaid");
@@ -62,8 +61,16 @@ const Page = () => {
         }
       };
 
+
+      useEffect(()=>{
+        if ((awsResponsee==[baba])) {
+            setLoadingCheck(true)
+        }
+      },[awsResponsee]);
+
       const analyze = () => {
         setAwsResponsee([baba]);
+        setLoadingCheck(true);
         if (preview?.base64String.includes("data:image/jpeg;base64,")) {
           setImage(preview?.base64String.split("data:image/jpeg;base64,")[1]);
         } else if (preview?.base64String.includes("data:image/png;base64,")) {
@@ -122,19 +129,20 @@ const Page = () => {
                     </div>
                 </div>
 
-                <AwsGet imageData={image} resultat={setAwsResponsee} count={count} analyze={analyze} resultat2={setOneOneString}/>
+                <AwsGet imageData={image} resultat={setAwsResponsee} count={count} analyze={analyze} resultat2={setOneOneString} setLoadingCheck={setLoadingCheck} setPreview={setPreview}/>
 
 
 
 
                 <div className="donnePage">
                     {
-                        preview==undefined?<h2>Insert an image with faces</h2>:ChooseFace(awsResponsee,faceActive,setFaceActive)
+                        preview==undefined?<h2>Insert an image with faces</h2>:(loadingCheck?Loading():(ChooseFace(awsResponsee,faceActive,setFaceActive)))
                     }
                     {
-                        faceActive==null?<div></div>:DataFace(awsResponsee[faceActive])
+                        (faceActive==null?<div></div>:DataFace(awsResponsee[faceActive]))
                     }
                 </div>
+                
             </div>
         </div>
     );

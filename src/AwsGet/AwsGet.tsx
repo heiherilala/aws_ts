@@ -1,7 +1,7 @@
 import { DetectFacesCommand } from "@aws-sdk/client-rekognition";
 import { Buffer } from "buffer";
 import { useEffect, useState } from "react";
-import { importedObject } from "../interface/Interface";
+import { img, importedObject } from "../interface/Interface";
 
 const { fromCognitoIdentityPool } = require("@aws-sdk/credential-providers");
 const {
@@ -20,9 +20,11 @@ interface Props {
   count: number;
   analyze: () => void;
   resultat2: React.Dispatch<any>;
+  setLoadingCheck:React.Dispatch<React.SetStateAction<boolean>>;
+  setPreview:React.Dispatch<React.SetStateAction<img | undefined>>;
 };
 
-const AwsGet: React.FC<Props> = ({imageData, resultat, count, analyze, resultat2}) => {
+const AwsGet: React.FC<Props> = ({imageData, resultat, count, analyze, resultat2, setLoadingCheck, setPreview}) => {
   //const [result, setResult] = useState<any>();
   
 
@@ -55,11 +57,14 @@ const AwsGet: React.FC<Props> = ({imageData, resultat, count, analyze, resultat2
     const detectFacesCommand = new DetectFacesCommand(params);
     try {
       const data = await client.send(detectFacesCommand);
-      //console.log('resultat apres la fonction: '+data);
-      resultat(data.FaceDetails);
-      resultat2(data.FaceDetails[0].Confidence);
-      console.log(data);
-      console.log(data.FaceDetails);
+      if (data.FaceDetails[0]==undefined||data.FaceDetails[0]==null) {
+        console.log("ATONTION C'est un movais image");
+        setPreview(undefined);
+      }else{
+        resultat(data.FaceDetails);
+        resultat2(data.FaceDetails[0].Confidence);
+      }
+      setLoadingCheck(false);
       return data;
     } catch (error) {
       console.log(error);

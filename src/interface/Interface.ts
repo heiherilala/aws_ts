@@ -91,3 +91,7 @@ export interface importedObject {
 };
 
 
+export interface img {
+    fileName: string, 
+    base64String: string
+}
